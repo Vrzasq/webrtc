@@ -12,8 +12,8 @@ const frontCameraConstraints = {
 const backCameraConstraints = {
     audio: true,
     video: {
-        width: { min: 1280 },
-        height: { min: 720 },
+        width: { exact: 1920 },
+        height: { exact: 1080 },
     }
 };
 
@@ -38,7 +38,7 @@ function handleLocalMediaStreamError(error) {
 }
 
 // Initializes media stream.
-initMedia(frontCameraConstraints);
+initMedia(backCameraConstraints);
 
 function changeCamera() {
     if (isFront) {
