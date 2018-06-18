@@ -20,23 +20,18 @@ const backCameraConstraints = {
 
 
 // Video element where stream will be placed.
-const frontCamera = document.getElementById('front-camera');
-const backCamera = document.getElementById('back-camera');
+const video = document.getElementById('video-stream');
 
 // Local stream that will be reproduced on the video.
-let frontCameraStream;
-let backCameraStream;
+let cameraStream;
+let isFront = true;
 
 // Handles success by adding the MediaStream to the video element.
-function gotLocalFrontMediaStream(mediaStream) {
-    frontCameraStream = mediaStream;
-    frontCamera.srcObject = mediaStream;
+function gotLocalMediaStream(mediaStream) {
+    cameraStream = mediaStream;
+    video.srcObject = mediaStream;
 }
 
-function gotLocalBackMediaStream(mediaStream) {
-    backCameraStream = mediaStream;
-    backCamera.srcObject = mediaStream;
-}
 
 // Handles error by logging a message to the console with the error message.
 function handleLocalMediaStreamError(error) {
@@ -44,8 +39,19 @@ function handleLocalMediaStreamError(error) {
 }
 
 // Initializes media stream.
-navigator.mediaDevices.getUserMedia(frontCameraConstraints)
-    .then(gotLocalFrontMediaStream).catch(handleLocalMediaStreamError);
+initMedia(frontCameraConstraints);
 
-navigator.mediaDevices.getUserMedia(backCameraConstraints)
-    .then(gotLocalBackMediaStream).catch(handleLocalMediaStreamError);
+function changeCamera() {
+    if (isFront) {
+        isFront = false;
+        initMedia(backCameraConstraints);
+    } else {
+        isFront = true;
+        initMedia(frontCameraConstraints)
+    }
+}
+
+function initMedia(cameraConstraints) {
+    navigator.mediaDevices.getUserMedia(cameraConstraints)
+        .then(gotLocalMediaStream).catch(handleLocalMediaStreamError);
+}
