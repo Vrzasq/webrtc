@@ -6,23 +6,25 @@
     <title>Realtime communication with WebRTC</title>
 
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 
 <body>
 
-    <h1>Realtime communication with WebRTC</h1>
+    <div class="w3-container">
+        <h1>Realtime communication with WebRTC</h1>
 
-    <div>
-        <video id="video-stream" autoplay playsinline></video>
+        <div>
+            <video id="video-stream" autoplay playsinline></video>
+        </div>
+
+        <div>
+            <button id="switch" class="w3-btn w3-xlarge w3-orange w3-border w3-border-black" onclick="changeCamera();">Switch Camera</button>
+        </div>
+
+        <script src="src/main.js"></script>
     </div>
-
-    <div>
-        <button id="switch" onclick="changeCamera();">Switch Camera</button>
-    </div>
-
-    <script src="src/main.js"></script>
-
 </body>
 
 </html>

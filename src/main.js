@@ -26,17 +26,6 @@ const video = document.getElementById('video-stream');
 let cameraStream;
 let isFront = true;
 
-// camera devices
-let cameraDevices;
-
-function gotCameraDevices(mediaDevices) {
-    for (var i = 0; i < mediaDevices.length; i++) {
-        var deviceInfo = mediaDevices[i];
-        if (deviceInfo.kind === "videoinput") {
-            cameraDevices.Push(deviceInfo);
-        }
-    }
-}
 
 // Handles success by adding the MediaStream to the video element.
 function gotLocalMediaStream(mediaStream) {
@@ -64,6 +53,7 @@ function changeCamera() {
 }
 
 function initMedia(cameraConstraints) {
+    // this will allow to change devices xD
     if (cameraStream) {
         cameraStream.getVideoTracks()[0].stop();
     }
