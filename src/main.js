@@ -39,7 +39,7 @@ function handleLocalMediaStreamError(error) {
 }
 
 // Initializes media stream.
-initMedia(frontCameraConstraints);
+initMedia(backCameraConstraints);
 
 function changeCamera() {
     if (isFront) {
