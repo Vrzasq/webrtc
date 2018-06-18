@@ -34,8 +34,8 @@ function gotLocalFrontMediaStream(mediaStream) {
 }
 
 function gotLocalBackMediaStream(mediaStream) {
-    frontCameraStream = mediaStream;
-    frontCamera.srcObject = mediaStream;
+    backCameraStream = mediaStream;
+    backCamera.srcObject = mediaStream;
 }
 
 // Handles error by logging a message to the console with the error message.
