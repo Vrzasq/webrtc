@@ -12,8 +12,9 @@ const frontCameraConstraints = {
 const backCameraConstraints = {
     audio: true,
     video: {
-        width: { exact: 1920 },
-        height: { exact: 1080 },
+        width: { min: 640, max: 1280 },
+        height: { min: 480, max: 720 },
+        facingMode: { exact: "environment" }
     }
 };
 
